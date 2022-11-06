@@ -1,6 +1,6 @@
 //List Object
 const TaskList = function(){
-    let tasks = []
+    let tasks = [];
 
     const addTask = function(text){
         const task = {
