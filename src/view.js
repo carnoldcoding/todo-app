@@ -118,10 +118,11 @@ const View = function(){
             if(e.target.className === 'edit'){
                 const id = parseInt(e.target.parentElement.id);
                 const text = e.target.previousElementSibling;
-                
+
                 text.readOnly = !text.readOnly;
                 if(text.readOnly){
                     e.target.textContent = "edit";
+                    handler(id, text.value);
                 }else{
                     e.target.textContent = "save";
                 }
