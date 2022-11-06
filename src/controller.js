@@ -1,26 +1,26 @@
 const Controller = function(model, view){
     //Display Initial Tasks
-    view.render(model.getItems());
+    view.render(model.getTasks());
 
     //event handlers
     const handleAddTask = function(text){
-        model.addItem(text);
-        view.render(model.getItems());
+        model.addTask(text);
+        view.render(model.getTasks());
     }
 
     const handleEditTask = function(id, text){
-        model.editItem(id, text);
-        view.render(model.getItems());
+        model.editTask(id, text);
+        view.render(model.getTasks());
     }
 
     const handleDeleteTask = function(id){
-        model.removeItem(id);
-        view.render(model.getItems());
+        model.removeTask(id);
+        view.render(model.getTasks());
     }
 
     const handleToggleTask = function(id){
-        model.toggleItem(id);
-        view.render(model.getItems());
+        model.toggleTask(id);
+        view.render(model.getTasks());
     }
 
     //Bind
@@ -29,8 +29,8 @@ const Controller = function(model, view){
     view.bindToggleTask(handleToggleTask);
     view.bindEditTask(handleEditTask);
 
-    model.addItem("Go to Work");
-    view.render(model.getItems());
+    model.addTask("Go to Work");
+    view.render(model.getTasks());
 }
 
 export default Controller

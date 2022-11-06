@@ -1,16 +1,16 @@
 const View = function(){
+    //DOM Manipulator Methods
     const createElement = function(tag, text, className){
         const element = document.createElement(tag);
         if (className) element.classList.add(className);
         if (text) element.textContent = text;
-
         return element;
     }
     const getElement = function(selector){
         return document.querySelector(selector);
     }
     
-    //Create
+    //Create Constant Elements
     const app = getElement("#root");
     const title = createElement('h1', 'Task List');
     const form = createElement('form');
@@ -20,11 +20,11 @@ const View = function(){
     input.placeholder = 'Add Task';
     const submitButton = createElement('button', 'add');
 
-    const taskList = createElement('ul');
-    taskList.classList.add('task-list');
+    const taskListDOM = createElement('ul');
+    taskListDOM.classList.add('task-list');
 
-    //Add to DOM
-    app.append(title, form, taskList);
+    //Add Constant Elements to DOM
+    app.append(title, form, taskListDOM);
     form.append(input, submitButton);
 
     //Private Methods
@@ -35,18 +35,18 @@ const View = function(){
         input.value = "";
     }
 
-    const render = function(list){
+    const render = function(taskList){
         //Refresh List
-        while(taskList.firstChild){
-            taskList.removeChild(taskList.firstChild);
+        while(taskListDOM.firstChild){
+            taskListDOM.removeChild(taskListDOM.firstChild);
         }
         //Base Case of Empty List
-        if(list.length == 0){
+        if(taskList.length == 0){
             const message = createElement('p');
-            message.textContent = "Nothing to do! Add a task?";
-            taskList.append(message);
-        }else{ //Populate List
-            list.forEach(function(item){
+            message.textContent = "No tasks left!";
+            taskListDOM.append(message);
+        }else{ //Populate Task List on the DOM
+            taskList.forEach(function(item){
                 const li = createElement('li');
                 li.id = item.id;
 
@@ -72,7 +72,7 @@ const View = function(){
 
                 //Add to DOM
                 li.append(checkbox, itemContent, editButton, deleteButton);
-                taskList.append(li);
+                taskListDOM.append(li);
             })
         }
     }
@@ -91,7 +91,7 @@ const View = function(){
     }
 
     const bindDeleteTask = function(handler){
-        taskList.addEventListener('click', (e)=>{
+        taskListDOM.addEventListener('click', (e)=>{
             //adds event listener to the entire list
             //checks to see if the clicked element is the "delete" element
             //extracts the ID from the delete element's parent list item
@@ -104,7 +104,7 @@ const View = function(){
     }
 
     const bindToggleTask = function(handler){
-        taskList.addEventListener('click', (e)=>{
+        taskListDOM.addEventListener('click', (e)=>{
             if(e.target.type === 'checkbox'){
                 const id = parseInt(e.target.parentElement.id);
 
@@ -114,7 +114,7 @@ const View = function(){
     }
 
     const bindEditTask = function(handler){
-        taskList.addEventListener('click', (e)=>{
+        taskListDOM.addEventListener('click', (e)=>{
             if(e.target.className === 'edit'){
                 const id = parseInt(e.target.parentElement.id);
                 const text = e.target.previousElementSibling;

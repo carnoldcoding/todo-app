@@ -1,49 +1,47 @@
 //List Object
-const List = function(){
-    let items = [
-        {id: 1, content: "Walk the Dog", complete: false}
-    ]
+const TaskList = function(){
+    let tasks = []
 
-    const addItem = function(text){
-        const item = {
-            id: items.length > 0 ? items.length + 1 : 1,
+    const addTask = function(text){
+        const task = {
+            id: tasks.length > 0 ? tasks.length + 1 : 1,
             content: text,
             complete: false
         }
-        items.push(item);
+        tasks.push(task);
     }
 
-    const removeItem = function(id){
-        items = items.filter(item => item.id != id);
+    const removeTask = function(id){
+        tasks = tasks.filter(task => task.id != id);
     }
 
-    const editItem = function(id, text){
-        items = items.map(item => item.id == id ? Object.assign(item, {content: text}): item);
+    const editTask = function(id, text){
+        tasks = tasks.map(task => task.id == id ? Object.assign(task, {content: text}): task);
     }
-    const toggleItem = function(id){
-        items = items.map(item => item.id == id ? Object.assign(item , {complete: !item.complete}) : item);
+    const toggleTask = function(id){
+        tasks = tasks.map(task => task.id == id ? Object.assign(task , {complete: !task.complete}) : task);
     }
 
-    const getItems = function(){
-        return items;
+    const getTasks = function(){
+        return tasks;
     }
 
     //Debug
     const display = function(){
-        console.log("==ITEMS==");
-        getItems().forEach(function(item){
-            console.log(`Item ${item.id}: ${item.content}`)
+        console.log("==TASKS==");
+        getTasks().forEach(function(task){
+            console.log(`task ${task.id}: ${task.content}`)
         })
     }
 
     return {
-        addItem,
-        removeItem,
-        editItem,
-        toggleItem,
+        addTask,
+        removeTask,
+        editTask,
+        toggleTask,
         display,
-        getItems
+        getTasks
     }
 }
 
-export default List;
+export default TaskList;

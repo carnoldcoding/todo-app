@@ -1,6 +1,6 @@
 import "./styles.scss"
-import List from "./model"
+import TaskList from "./model"
 import View from "./view"
 import Controller from "./controller";
 
-const myController = Controller(List(), View());
+const myController = Controller(TaskList(), View());
