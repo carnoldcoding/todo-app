@@ -56,8 +56,10 @@ const View = function(){
                 checkbox.checked = item.complete;
 
                 //The Task's Details
-                const itemContent = createElement('span');
-                itemContent.textContent = item.content;
+                const itemContent = createElement('input');
+                itemContent.value = item.content;
+                itemContent.classList.add('task-details');
+                itemContent.readOnly = true;
 
                 if(item.complete){
                     itemContent.style.textDecoration = "line-through";
@@ -111,11 +113,28 @@ const View = function(){
         })
     }
 
+    const bindEditTask = function(handler){
+        taskList.addEventListener('click', (e)=>{
+            if(e.target.className === 'edit'){
+                const id = parseInt(e.target.parentElement.id);
+                const text = e.target.previousElementSibling;
+                
+                text.readOnly = !text.readOnly;
+                if(text.readOnly){
+                    e.target.textContent = "edit";
+                }else{
+                    e.target.textContent = "save";
+                }
+            }
+        })
+    }
+
     return {
         render,
         bindAddTask,
         bindDeleteTask,
-        bindToggleTask
+        bindToggleTask,
+        bindEditTask
     }
 }
 

@@ -27,6 +27,7 @@ const Controller = function(model, view){
     view.bindAddTask(handleAddTask);
     view.bindDeleteTask(handleDeleteTask);
     view.bindToggleTask(handleToggleTask);
+    view.bindEditTask(handleEditTask);
 
     model.addItem("Go to Work");
     view.render(model.getItems());
