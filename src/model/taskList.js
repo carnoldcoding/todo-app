@@ -6,8 +6,14 @@ const TaskList = function(assignedId, listName){
     let name = listName;
     let tasks = [];
 
+    //To create and add a new task
     const addTask = function(text){
         const task = tasks.length == 0 ? Task(1, text) : Task(parseInt(tasks.length)+1, text);
+        tasks.push(task);
+    }
+
+    //To add a task that already exists
+    const addTaskCopy = function(task){
         tasks.push(task);
     }
 
@@ -39,6 +45,10 @@ const TaskList = function(assignedId, listName){
         return id;
     }
 
+    const setTasks = function(newTasks){
+        tasks = newTasks;
+    }
+
     //Debug
     const display = function(){ 
         console.log(`===${name}===`);
@@ -49,13 +59,16 @@ const TaskList = function(assignedId, listName){
 
     return {
         addTask,
+        addTaskCopy,
         removeTask,
         editTask,
         toggleTask,
         editPriority,
         editDueDate,
         getId,
-        display
+        getTasks,
+        setTasks,
+        display,
     }
 }
 
