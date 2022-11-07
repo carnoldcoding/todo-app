@@ -1,5 +1,5 @@
 import "./styles.scss"
-import TaskList from "./taskList"
+import TaskList from "./model/taskList"
 
 const myList = TaskList();
 myList.addTask("Walk the Dog");
