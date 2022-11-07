@@ -1,13 +1,12 @@
 import "./styles.scss"
-import TaskList from "./model/taskList"
+import Projects from './model/projects'
 
-const myList = TaskList("Homework");
-const myList2 = TaskList("Workout");
+const myProjects = Projects();
 
-myList.addTask("Do history work");
-myList.display();
-
-myList2.addTask("Do push ups");
-myList2.editTask(1, "Do jogging");
-myList2.editPriority(1, 2);
-myList2.display();
+myProjects.addProject("Homework");
+myProjects.addProject("Fitness");
+myProjects.addTaskToProject(1, "Eat the turkey");
+myProjects.addTaskToProject(1, "Make the turkey");
+myProjects.removeTaskFromProject(1, 1);
+myProjects.editTask(1, 2, "Eat waffles");
+myProjects.display();

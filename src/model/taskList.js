@@ -1,7 +1,8 @@
 import Task from './task'
 
 //List Object
-const TaskList = function(listName){
+const TaskList = function(assignedId, listName){
+    const id = assignedId;
     let name = listName;
     let tasks = [];
 
@@ -34,8 +35,12 @@ const TaskList = function(listName){
         return tasks;
     }
 
+    const getId = function(){
+        return id;
+    }
+
     //Debug
-    const display = function(){
+    const display = function(){ 
         console.log(`===${name}===`);
         getTasks().forEach(function(task){
             console.log(`task ${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()}`)
@@ -49,6 +54,7 @@ const TaskList = function(listName){
         toggleTask,
         editPriority,
         editDueDate,
+        getId,
         display
     }
 }
