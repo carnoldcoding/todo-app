@@ -5,7 +5,7 @@ const Task = function(assignedId, text){
     let content = text;
     let status = false;
     let priority = 1; //Will go from 1 - 3 (Low, Medium, High)
-    let dueDate = format(new Date(), 'MM/dd/yyyy'); //Formatted by date-fns
+    let dueDate = format(new Date(), 'MM/dd/yyyy'); //Formatted by date-fn
 
     //Getters and Setters
     const getContent = ()=>{return content}

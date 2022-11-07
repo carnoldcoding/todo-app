@@ -1,19 +1,13 @@
 import "./styles.scss"
 import TaskList from "./model/taskList"
 
-const myList = TaskList("Daily Work");
-myList.addTask("Walk the Dog");
-myList.addTask("Walk the Cat");
-myList.addTask("walk the giraffe");
+const myList = TaskList("Homework");
+const myList2 = TaskList("Workout");
 
-myList.toggleTask(1);
-myList.editTask(1, "hell yes");
-myList.editPriority(1, 2);
+myList.addTask("Do history work");
 myList.display();
 
-const myList2 = TaskList("Homework");
-myList2.addTask("complete history work");
-myList2.addTask("complete math work");
-myList2.editTask(1, "Complete gym homework");
-myList2.editDueDate(2, new Date("2022-03-25"));
+myList2.addTask("Do push ups");
+myList2.editTask(1, "Do jogging");
+myList2.editPriority(1, 2);
 myList2.display();
