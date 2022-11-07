@@ -1,25 +1,24 @@
+import Task from './task'
+
 //List Object
 const TaskList = function(){
     let tasks = [];
 
     const addTask = function(text){
-        const task = {
-            id: tasks.length > 0 ? tasks.length + 1 : 1,
-            content: text,
-            complete: false
-        }
+        const task = tasks.length == 0 ? Task(1, text) : Task(parseInt(tasks.length)+1, text);
         tasks.push(task);
     }
 
     const removeTask = function(id){
-        tasks = tasks.filter(task => task.id != id);
+        tasks = tasks.filter(task => task.getId() != id);
     }
 
     const editTask = function(id, text){
-        tasks = tasks.map(task => task.id == id ? Object.assign(task, {content: text}): task);
+        tasks.map(task => task.getId() == id ? task.setContent(text): task);
     }
+
     const toggleTask = function(id){
-        tasks = tasks.map(task => task.id == id ? Object.assign(task , {complete: !task.complete}) : task);
+        tasks.map(task => task.getId() == id ? task.toggle(): task);
     }
 
     const getTasks = function(){
@@ -30,7 +29,7 @@ const TaskList = function(){
     const display = function(){
         console.log("==TASKS==");
         getTasks().forEach(function(task){
-            console.log(`task ${task.id}: ${task.content}`)
+            console.log(`task ${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()}`)
         })
     }
 
@@ -39,8 +38,7 @@ const TaskList = function(){
         removeTask,
         editTask,
         toggleTask,
-        display,
-        getTasks
+        display
     }
 }
 
