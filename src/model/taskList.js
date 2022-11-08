@@ -12,11 +12,6 @@ const TaskList = function(assignedId, listName){
         tasks.push(task);
     }
 
-    //To add a task that already exists
-    const addTaskCopy = function(task){
-        tasks.push(task);
-    }
-
     const removeTask = function(id){
         tasks = tasks.filter(task => task.getId() != id);
     }
@@ -45,21 +40,16 @@ const TaskList = function(assignedId, listName){
         return id;
     }
 
-    const setTasks = function(newTasks){
-        tasks = newTasks;
-    }
-
     //Debug
     const display = function(){ 
         console.log(`===${name}===`);
         getTasks().forEach(function(task){
-            console.log(`task ${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()}`)
+            console.log(`task ${name}-${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()}`)
         })
     }
 
     return {
         addTask,
-        addTaskCopy,
         removeTask,
         editTask,
         toggleTask,
@@ -67,7 +57,6 @@ const TaskList = function(assignedId, listName){
         editDueDate,
         getId,
         getTasks,
-        setTasks,
         display,
     }
 }

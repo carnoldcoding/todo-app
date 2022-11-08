@@ -1,26 +1,8 @@
 import TaskList from './taskList'
-import {format} from 'date-fns'
 
 const Projects = function(){
-    let projects = [TaskList(1, "Today")];
+    let projects = [TaskList(1, "All")];
     let currentProject = projects[0];
-
-    //Setup Today/This Week Project Categories
-    const updateTodayProject = function(){
-        const todaysDate = format(new Date(), 'MM/dd/yyyy');
-        const todayProject = projects[0];
-        //remove outdated tasks
-        todayProject.setTasks(todayProject.getTasks().filter(task => task.getDueDate() == todaysDate)); 
-
-        //add current tasks
-        projects.forEach(function(project){
-            project.getTasks().forEach(function(task){
-                if(task.getDueDate() == todaysDate && !todayProject.getTasks().includes(task)){
-                    todayProject.addTaskCopy(task);
-                }
-            })
-        })
-    }
 
     //Access Task List Methods
     const addProject = function(name){
@@ -65,8 +47,7 @@ const Projects = function(){
         editTaskPriority,
         toggleTaskInProject,
         editTaskDate,
-        display,
-        updateTodayProject
+        display
     }
 }
 
