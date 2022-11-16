@@ -20,4 +20,6 @@ myList.addCategoryToTask(2, 4);
 myList.display();
 
 myList.removeTask(1);
+myList.removeCategory(1);
+myList.addCategory("Sandwiches");
 myList.display();

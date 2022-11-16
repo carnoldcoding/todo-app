@@ -45,6 +45,7 @@ const TaskList = function(){
     }
 
     const removeCategory = function(categoryId){
+        tasks.map(task => task.getCategoryId() == categoryId ? task.setCategoryId(-1) : task); //Might not need, safety precaution
         categories = categories.filter(category => category.getId() != categoryId);
     }
 
@@ -57,11 +58,11 @@ const TaskList = function(){
         //Print All Tasks
         console.log("==ALL==");
         getTasks().forEach(function(task){
-            console.log(`task ${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()}`)
+            console.log(`task ${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()} | categoryId: ${task.getCategoryId()}`)
         })
         //Print specific category's items
         categories.forEach(function(category){
-            console.log(`==${category.getTitle()}==`)
+            console.log(`==${category.getId()} ${category.getTitle()}==`)
             tasks.forEach(function(task){
                 task.getCategoryId() == category.getId() ? console.log(task.getContent()) : null;
             });
