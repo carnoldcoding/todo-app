@@ -1,14 +1,12 @@
 import Task from './task'
 
 //List Object
-const TaskList = function(assignedId, listName){
-    const id = assignedId;
-    let name = listName;
+const TaskList = function(){
     let tasks = [];
+    let categories = ["Fitness", "Homework"];
 
-    //To create and add a new task
     const addTask = function(text){
-        const task = tasks.length == 0 ? Task(1, text) : Task(parseInt(tasks.length)+1, text);
+        const task = tasks.length == 0 ? Task(1, text) : Task(parseInt(tasks[tasks.length-1].getId())+1, text);
         tasks.push(task);
     }
 
@@ -32,19 +30,28 @@ const TaskList = function(assignedId, listName){
         tasks.map(task => task.getId() == id ? task.setDueDate(date) : task);
     }
 
+    const addTaskToCategory = function(taskId, categoryId){
+        tasks.map(task => task.getId() == taskId ? task.setCategoryId(categoryId) : task);
+    }
+
     const getTasks = function(){
         return tasks;
     }
 
-    const getId = function(){
-        return id;
+    //Debug
+
+    const display = function(){
+        console.log("==ALL==");
+        getTasks().forEach(function(task){
+            console.log(`task ${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()}`)
+        })
     }
 
-    //Debug
-    const display = function(){ 
-        console.log(`===${name}===`);
-        getTasks().forEach(function(task){
-            console.log(`task ${name}-${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()}`)
+    const displayCategory = function(categoryId){
+        console.log(`==${categories[categoryId - 1]}==`)
+        const categoryTasks = getTasks().filter(task => task.getCategoryId() == categoryId);
+        categoryTasks.forEach(function(task){
+            console.log(`task ${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()}`)
         })
     }
 
@@ -55,9 +62,10 @@ const TaskList = function(assignedId, listName){
         toggleTask,
         editPriority,
         editDueDate,
-        getId,
+        addTaskToCategory,
         getTasks,
         display,
+        displayCategory,
     }
 }
 

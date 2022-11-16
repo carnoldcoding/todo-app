@@ -1,8 +1,10 @@
 import "./styles.scss"
-import Projects from './model/projects'
+import TaskList from "./model/taskList"
 
-const myProjects = Projects();
-myProjects.addProject("Homework");
-myProjects.addTaskToProject(1, "Do your homework");
+const myList = TaskList();
+myList.addTask("Walk the dog");
+myList.addTask("Walk the cat");
+myList.addTaskToCategory(1, 1);
 
-myProjects.display();
+myList.display();
+myList.displayCategory(1);
