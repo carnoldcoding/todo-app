@@ -1,15 +1,19 @@
 import Task from './task'
+import Category from './category'
 
 //List Object
 const TaskList = function(){
+    //Attributes
     let tasks = [];
-    let categories = ["Fitness", "Homework"];
+    let categories = [];
 
+    //Methods
     const addTask = function(text){
         const task = tasks.length == 0 ? Task(1, text) : Task(parseInt(tasks[tasks.length-1].getId())+1, text);
         tasks.push(task);
     }
 
+    //Task Methods
     const removeTask = function(id){
         tasks = tasks.filter(task => task.getId() != id);
     }
@@ -30,28 +34,37 @@ const TaskList = function(){
         tasks.map(task => task.getId() == id ? task.setDueDate(date) : task);
     }
 
-    const addTaskToCategory = function(taskId, categoryId){
-        tasks.map(task => task.getId() == taskId ? task.setCategoryId(categoryId) : task);
-    }
-
     const getTasks = function(){
         return tasks;
     }
 
+    //Category Methods
+    const addCategory = function(text){
+        const category = categories.length == 0 ? Category(1, text) : Category(parseInt(categories[categories.length - 1].getId())+1, text);
+        categories.push(category);
+    }
+
+    const removeCategory = function(categoryId){
+        categories = categories.filter(category => category.getId() != categoryId);
+    }
+
+    const addCategoryToTask = function(categoryId, taskId){
+        tasks.map(task => task.getId()==taskId ? task.setCategoryId(categoryId) : task);
+    }
     //Debug
 
     const display = function(){
+        //Print All Tasks
         console.log("==ALL==");
         getTasks().forEach(function(task){
             console.log(`task ${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()}`)
         })
-    }
-
-    const displayCategory = function(categoryId){
-        console.log(`==${categories[categoryId - 1]}==`)
-        const categoryTasks = getTasks().filter(task => task.getCategoryId() == categoryId);
-        categoryTasks.forEach(function(task){
-            console.log(`task ${task.getId()}: ${task.getContent()} | status: ${task.getStatus()} | priority: ${task.getPriority()} | due date: ${task.getDueDate()}`)
+        //Print specific category's items
+        categories.forEach(function(category){
+            console.log(`==${category.getTitle()}==`)
+            tasks.forEach(function(task){
+                task.getCategoryId() == category.getId() ? console.log(task.getContent()) : null;
+            });
         })
     }
 
@@ -62,10 +75,13 @@ const TaskList = function(){
         toggleTask,
         editPriority,
         editDueDate,
-        addTaskToCategory,
         getTasks,
-        display,
-        displayCategory,
+
+        addCategory,
+        removeCategory,
+        addCategoryToTask,
+
+        display
     }
 }
 
