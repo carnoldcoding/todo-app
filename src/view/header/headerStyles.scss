@@ -1,0 +1,51 @@
+@import "../../configs.scss";
+
+.headerWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 2rem;
+    height: 80px;
+    background: var(--header-background); 
+    border-bottom: 2px solid var(--primary-color);
+    i{
+        font-size: 39px;
+        color: var(--font-color);
+    }
+    h1{
+        span{
+            color: var(--primary-color);
+        }
+    }
+    .theme-toggle{
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 35px;
+        width: 80px;
+        border: 2px solid var(--toggle-color);
+        border-radius: 2rem;
+        
+        &:hover{
+            cursor: pointer;
+        }
+        
+        //Button
+        &::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            height: 27px;
+            width: 27px;
+            margin: 0px 5px;
+            border-radius: 50%;
+            border: 2px solid var(--toggle-color);
+            transition: .2s ease;
+        }
+
+        //Active Dark Theme
+        &.active::after{
+            left: 50%;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+//CSS Reset
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    //idk if keeping this, helps with dark/light transition
+    transition: .2s ease;
+}
+
+//Imports
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap');
+
+//Variable Configs
+:root{
+    //Font
+    --standard-font-family: 'Roboto Flex', sans-serif;
+    //Colors
+    --header-background: white;
+    --primary-color: #8349E2;
+    --font-color: black;
+    --toggle-color: black;
+} 
+
+.dark-theme{
+    --header-background: #252525; 
+    --font-color: white;
+    --toggle-color: white;
+}
+
+//General Settings
+
+h1{
+    font-family: var(--standard-font-family);
+    font-size: 3rem;
+    color: var(--font-color);
+}
