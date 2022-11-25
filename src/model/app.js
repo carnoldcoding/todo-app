@@ -2,14 +2,13 @@ import Task from './task'
 import Category from './category'
 
 //List Object
-const TaskList = (function(){
+const App = (function(){
     //Attributes
     let tasks = [];
     let categories = [];
     let darkMode = false;
 
     //Methods
-
     const toggleDarkMode = function(){darkMode = !darkMode;}
 
     const getDarkMode = function(){return darkMode}
@@ -93,4 +92,4 @@ const TaskList = (function(){
     }
 })();
 
-export default TaskList;
+export default App;

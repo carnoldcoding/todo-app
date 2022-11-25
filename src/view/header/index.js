@@ -5,7 +5,7 @@ const Header = (function(){
         //Header
         const root = document.querySelector("#root");
         const headerWrapper = document.createElement("div");
-        headerWrapper.classList.add("headerWrapper");
+        headerWrapper.classList.add("header-wrapper");
         root.append(headerWrapper);
 
         //Bars
@@ -22,14 +22,28 @@ const Header = (function(){
         //Toggle
         const toggle = document.createElement('div');
         toggle.classList.add('theme-toggle');
+        toggle.addEventListener('click', toggleTheme);
 
-        //Current Issue (The function needs to be defined in the controller, not here)
-        toggle.addEventListener('click', ()=> toggleTheme());
-        
+        //Render
         headerWrapper.append(bars, header, toggle);
     }
+
+    const toggle = function(darkMode){
+        const root = document.querySelector("#root");
+        const toggle = document.querySelector('.theme-toggle');
+
+        if(darkMode){
+            root.classList.add('dark-theme');
+            toggle.classList.add('active');
+        }else{
+            root.classList.remove('dark-theme');
+            toggle.classList.remove('active');
+        }
+    }
+
     return{
-        render
+        render,
+        toggle
     }
 })();
 
