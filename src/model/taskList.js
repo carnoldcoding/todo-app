@@ -2,7 +2,7 @@ import Task from './task'
 import Category from './category'
 
 //List Object
-const TaskList = function(){
+const TaskList = (function(){
     //Attributes
     let tasks = [];
     let categories = [];
@@ -10,9 +10,9 @@ const TaskList = function(){
 
     //Methods
 
-    const toggleTheme = function(){
-        darkMode = !darkMode;
-    }
+    const toggleDarkMode = function(){darkMode = !darkMode;}
+
+    const getDarkMode = function(){return darkMode}
 
     //Task Methods
     const addTask = function(text){
@@ -82,14 +82,15 @@ const TaskList = function(){
         editPriority,
         editDueDate,
         getTasks,
+        getDarkMode,
 
         addCategory,
         removeCategory,
         addCategoryToTask,
 
-        toggleTheme,
+        toggleDarkMode,
         display
     }
-}
+})();
 
 export default TaskList;

@@ -1,7 +1,7 @@
 import "./headerStyles.scss"
 
-const header = (function(){
-    const render = function(){
+const Header = (function(){
+    const render = function(toggleTheme){
         //Header
         const root = document.querySelector("#root");
         const headerWrapper = document.createElement("div");
@@ -24,10 +24,7 @@ const header = (function(){
         toggle.classList.add('theme-toggle');
 
         //Current Issue (The function needs to be defined in the controller, not here)
-        toggle.addEventListener('click', ()=>{
-            toggle.classList.toggle('active');
-            root.classList.toggle('dark-theme');
-        })
+        toggle.addEventListener('click', ()=> toggleTheme());
         
         headerWrapper.append(bars, header, toggle);
     }
@@ -36,4 +33,4 @@ const header = (function(){
     }
 })();
 
-export default header
+export default Header

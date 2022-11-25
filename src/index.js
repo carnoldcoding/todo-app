@@ -1,5 +1,4 @@
 import "./configs.scss";
-import TaskList from "./model/taskList"
-import View from "./view";
+import headerController from "./controller/headerController";
 
-View();
+headerController;
