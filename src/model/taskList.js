@@ -6,14 +6,19 @@ const TaskList = function(){
     //Attributes
     let tasks = [];
     let categories = [];
+    let darkMode = false;
 
     //Methods
+
+    const toggleTheme = function(){
+        darkMode = !darkMode;
+    }
+
+    //Task Methods
     const addTask = function(text){
         const task = tasks.length == 0 ? Task(1, text) : Task(parseInt(tasks[tasks.length-1].getId())+1, text);
         tasks.push(task);
     }
-
-    //Task Methods
     const removeTask = function(id){
         tasks = tasks.filter(task => task.getId() != id);
     }
@@ -82,6 +87,7 @@ const TaskList = function(){
         removeCategory,
         addCategoryToTask,
 
+        toggleTheme,
         display
     }
 }
