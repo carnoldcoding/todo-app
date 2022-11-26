@@ -7,7 +7,7 @@ const Task = function(assignedId, text){
     let content = text;
     let status = false;
     let priority = 1; //Will go from 1 - 3 (Low, Medium, High)
-    let dueDate = format(new Date(), 'MM/dd/yyyy'); //Formatted by date-fn
+    let dueDate = new Date(); //Formatted by date-fn
 
     //Getters and Setters
     const getContent = ()=>{return content}
@@ -16,10 +16,11 @@ const Task = function(assignedId, text){
     const getId = ()=>{return id}
     const getCategoryId = ()=> {return categoryId}
     const getDueDate = () =>{return dueDate}
+    const getFormattedDate = ()=>{return format(dueDate, 'MM/dd/yyyy')}
 
     const setContent = (text) =>{content = text}
     const setPriority = (level) => {priority = level}
-    const setDueDate = (date)=>{dueDate = format(date, 'MM/dd/yyyy');}
+    const setDueDate = (date)=>{dueDate = date;}
     const setCategoryId = (catId)=>{categoryId = catId}
 
     //Methods
@@ -32,6 +33,7 @@ const Task = function(assignedId, text){
         getId,
         getCategoryId,
         getDueDate,
+        getFormattedDate,
 
         setContent,
         setPriority,

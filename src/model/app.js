@@ -1,5 +1,6 @@
 import Task from './task'
 import Category from './category'
+import {format} from 'date-fns'
 
 //List Object
 const App = (function(){
@@ -47,7 +48,7 @@ const App = (function(){
 
     //Category Methods
     const addCategory = function(text){
-        const category = categories.length == 0 ? Category(1, text) : Category(parseInt(categories[categories.length - 1].getId())+1, text);
+        const category = categories.length == 0 ? Category(1, text) : Category(parseInt(categories[categories.length - 1].getId()+1), text);
         categories.push(category);
     }
 
@@ -63,11 +64,15 @@ const App = (function(){
     const getCategories = function() {return categories}
 
     const setCurrentCategory = function(newCategoryId){currentCategoryId = newCategoryId}
-    const setCurrentTaskList = function(){
-        currentTaskList = tasks.filter(task => task.getCategoryId() != currentCategoryId);
+    const setCurrentTaskList = function(taskList){
+        if(taskList){
+            currentTaskList = taskList;
+        }else{
+            currentTaskList = tasks.filter(task => task.getCategoryId() == currentCategoryId); 
+        }
     }
     const getCurrentTaskList = function(){return currentTaskList}
-    const getCurrentCategory = function(){return Object.create(categories.filter(category => category.getId() != currentCategoryId)[0])}
+    const getCurrentCategory = function(){return Object.create(categories.filter(category => category.getId() == currentCategoryId)[0])}
 
     //Sidebar
     const toggleSidebar = function(){

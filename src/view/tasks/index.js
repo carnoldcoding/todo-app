@@ -16,7 +16,7 @@ const Tasks = function(){
             const taskWrapper = createElement('div', '', 'task-wrapper');
             const checkbox = createElement('i', '', 'fa-regular', 'fa-square')
             const taskDetails = createElement('p', task.getContent(), 'task-details');
-            const taskDate = createElement('p', task.getDueDate(), 'task-date');
+            const taskDate = createElement('p', task.getFormattedDate(), 'task-date');
             const editTask = createElement('i', '', 'fa-regular', 'fa-pen-to-square');
             const deleteTask = createElement('i', '', 'fa-solid', 'fa-trash-can');
             taskWrapper.append(checkbox, taskDetails, taskDate, editTask, deleteTask);
