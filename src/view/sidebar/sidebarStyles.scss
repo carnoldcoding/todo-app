@@ -6,7 +6,6 @@
     grid-template-rows: 300px 1fr;
     padding: 2rem;
     background: var(--sidebar-background);
-    border-right: 2px solid black;
     overflow: hidden;
 
     .home-wrapper{
@@ -50,6 +49,6 @@
     }
 
     &.hidden{
-        display: none;
+        visibility:hidden;
     }
 }

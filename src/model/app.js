@@ -45,7 +45,7 @@ const App = (function(){
 
     //Category Methods
     const addCategory = function(text){
-        const category = categories.length == 0 ? Category(1, text) : Category(parseInt(categories[categories.length - 1].getId())+1, text);
+        const category = categories.length == 0 ? Category(5, text) : Category(parseInt(categories[categories.length - 1].getId())+1, text);
         categories.push(category);
     }
 

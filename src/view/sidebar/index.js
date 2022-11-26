@@ -18,6 +18,7 @@ const Sidebar = (function(){
         const allTasks = createElement('div', '', 'home-item');
         const allTasksTitle = createElement('h3', 'All Tasks');
         const allTasksIcon = createElement('i', '', 'fa-solid', 'fa-inbox');
+        // allTasks.addEventListener('click', allCategoryFilter);
         allTasks.append(allTasksIcon, allTasksTitle);
 
         //Today Category

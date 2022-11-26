@@ -16,16 +16,21 @@
     //Colors
     --header-background: white;
     --sidebar-background: var(--header-background);
-    --primary-color: #8349E2;
+    --main-background: #DEDEDE;
+    --primary-color: #763ed1;
     --font-color: black;
     --toggle-color: black;
+    --task-background: white;
 } 
 
 .dark-theme{
     --header-background: #252525; 
     --sidebar-background: var(--header-background);
+    --main-background: #1A1A1A;
+    --task-background: #2D2D2D;
     --font-color: white;
     --toggle-color: white;
+    
 }
 
 //General Settings
@@ -57,4 +62,14 @@ h3{
     font-size: 1.75rem;
     color: var(--font-color);
     text-transform: capitalize;
+}
+
+p{
+    font-family: var(--standard-font-family);
+    font-size: 1.6rem;
+    color: var(--font-color);
+}
+
+i{
+    color: var(--font-color);
 }
