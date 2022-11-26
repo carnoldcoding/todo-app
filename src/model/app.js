@@ -7,6 +7,7 @@ const App = (function(){
     let tasks = [];
     let categories = [];
     let darkMode = false;
+    let sidebarOpen = false;
 
     //Methods
     const toggleDarkMode = function(){darkMode = !darkMode;}
@@ -58,6 +59,12 @@ const App = (function(){
     }
 
     const getCategories = function() {return categories}
+
+    //Sidebar
+    const toggleSidebar = function(){
+        sidebarOpen = !sidebarOpen;
+    }
+    const getSidebarStatus = function() { return sidebarOpen }
     //Debug
 
     const display = function(){
@@ -89,6 +96,9 @@ const App = (function(){
         removeCategory,
         addCategoryToTask,
         getCategories,
+
+        toggleSidebar,
+        getSidebarStatus,
 
         toggleDarkMode,
         display

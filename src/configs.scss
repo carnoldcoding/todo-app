@@ -3,8 +3,7 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    //idk if keeping this, helps with dark/light transition
-    transition: .2s ease;
+    transition: background-color .2s ease;
 }
 
 //Imports
@@ -37,7 +36,7 @@
 .content-grid{
     display: grid;
     min-height: calc(100vh - 80px);
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: minmax(300px, .3fr) 1fr;
 }
 
 h1{

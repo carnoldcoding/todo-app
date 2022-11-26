@@ -7,9 +7,12 @@ const headerController = (function(){
         App.toggleDarkMode();
         Header.toggle(App.getDarkMode());
     }
-
+    const toggleSidebar = function(){
+        App.toggleSidebar();
+        Header.toggleSidebar(App.getSidebarStatus());
+    }
     //Render
-    Header.render(toggleTheme);
+    Header.render(toggleTheme, toggleSidebar);
 });
 
 export default headerController;

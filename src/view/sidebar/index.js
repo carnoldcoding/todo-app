@@ -53,7 +53,6 @@ const Sidebar = (function(){
         const listsWrapper = document.querySelector('.lists-wrapper');
         const lists = createElement('div', '', 'task-lists');
         taskLists.forEach(function(taskList){
-            console.log('working');
             const listItem = createElement('div', '', 'list-item');
             const listItemTitle = createElement('h3', taskList.getTitle());
             const listItemIcon = createElement('i', '', 'fa-regular', 'fa-note-sticky');
