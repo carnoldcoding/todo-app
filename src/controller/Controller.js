@@ -1,7 +1,8 @@
+import App from '../model/app'
 import headerController from './headerController'
 import SidebarController from './sidebarController'
-import App from '../model/app'
 import TasksController from './tasksController';
+import ActionButtonController from './actionButtonController';
 
 const Controller = (function(){
     
@@ -28,6 +29,7 @@ const Controller = (function(){
     headerController();
     SidebarController();
     TasksController();
+    ActionButtonController();
 })
 
 export default Controller
