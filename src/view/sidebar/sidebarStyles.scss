@@ -3,6 +3,7 @@
 .sidebar{
     display: grid;
     grid-column: span 1;
+    grid-template-rows: 300px 1fr;
     padding: 2rem;
     background: var(--sidebar-background);
     border-right: 2px solid black;
@@ -24,6 +25,12 @@
                 font-size: 2rem;
                 color: var(--font-color);
             }
+        }
+    }
+
+    .lists-wrapper{
+        h2{
+            border-bottom: 2px solid var(--font-color);
         }
     }
 }
