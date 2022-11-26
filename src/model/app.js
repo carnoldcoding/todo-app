@@ -56,6 +56,8 @@ const App = (function(){
     const addCategoryToTask = function(categoryId, taskId){
         tasks.map(task => task.getId()==taskId ? task.setCategoryId(categoryId) : task);
     }
+
+    const getCategories = function() {return categories}
     //Debug
 
     const display = function(){
@@ -86,6 +88,7 @@ const App = (function(){
         addCategory,
         removeCategory,
         addCategoryToTask,
+        getCategories,
 
         toggleDarkMode,
         display

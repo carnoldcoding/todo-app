@@ -1,6 +1,9 @@
 import Sidebar from '../view/sidebar'
-const SidebarController = (function(){
+import App from '../model/app'
+
+const SidebarController = (function(categories){
     Sidebar.render();
-})();
+    Sidebar.renderList(App.getCategories());
+});
 
 export default SidebarController;

@@ -10,6 +10,6 @@ const headerController = (function(){
 
     //Render
     Header.render(toggleTheme);
-})();
+});
 
 export default headerController;

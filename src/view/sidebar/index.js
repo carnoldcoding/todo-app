@@ -38,19 +38,35 @@ const Sidebar = (function(){
         const importantTasksIcon = createElement('i', '', 'fa-regular', 'fa-star');
         importantTasks.append(importantTasksIcon, importantTasksTitle);
 
+        //Task Lists
+        const listsWrapper = createElement('div', '', 'lists-wrapper');
+        const listsTitle = createElement('h2', 'Task Lists', 'task-lists-title');
+        listsWrapper.append(listsTitle);
+        sidebar.append(listsWrapper);
         //Add them all
         homeItems.append(allTasks, todaysTasks, weeklyTasks, importantTasks);
 
-        //Dynamic Lists
-        const listsWrapper = createElement('div', '', 'lists-wrapper');
-        const listsTitle = createElement('h2', 'Task Lists', 'task-lists');
-        listsWrapper.append(listsTitle);
-        sidebar.append(listsWrapper);
         grid.append(sidebar);
     }
 
+    const renderList = function(taskLists){
+        const listsWrapper = document.querySelector('.lists-wrapper');
+        const lists = createElement('div', '', 'task-lists');
+        taskLists.forEach(function(taskList){
+            console.log('working');
+            const listItem = createElement('div', '', 'list-item');
+            const listItemTitle = createElement('h3', taskList.getTitle());
+            const listItemIcon = createElement('i', '', 'fa-regular', 'fa-note-sticky');
+
+            listItem.append(listItemIcon, listItemTitle);
+            lists.append(listItem);
+        })
+        listsWrapper.append(lists);
+    }
+
     return{
-        render
+        render,
+        renderList
     }
 })();
 
