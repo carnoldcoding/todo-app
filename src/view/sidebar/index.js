@@ -59,7 +59,7 @@ const Sidebar = (function(){
         taskLists.forEach(function(taskList){
             const listItem = createElement('div', '', 'list-item');
             const listItemTitle = createElement('h3', taskList.getTitle());
-            const listItemIcon = createElement('i', '', 'fa-regular', 'fa-note-sticky');
+            const listItemIcon = createElement('i', '', 'fa-regular', 'fa-folder');
             listItem.setAttribute("id", `category-${taskList.getId()}`)
             listItem.addEventListener('click', (e)=>{listFilter(e.currentTarget.id)});
 

@@ -21,6 +21,9 @@
     --font-color: black;
     --toggle-color: black;
     --task-background: white;
+    --modal-body: #F1F1F1;
+    --modal-header: var(--header-background);
+    --modal-card: #e2e2e2;
 } 
 
 .dark-theme{
@@ -30,6 +33,10 @@
     --task-background: #2D2D2D;
     --font-color: white;
     --toggle-color: white;
+    --modal-body: #1C1C1C;
+    --modal-header: var(--header-background);
+    --modal-card: var(--task-background);
+
     
 }
 
