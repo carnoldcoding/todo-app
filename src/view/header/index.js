@@ -3,10 +3,7 @@ import "./headerStyles.scss"
 const Header = (function(){
     const render = function(toggleTheme){
         //Header
-        const root = document.querySelector("#root");
-        const headerWrapper = document.createElement("div");
-        headerWrapper.classList.add("header-wrapper");
-        root.append(headerWrapper);
+        const headerWrapper = document.querySelector(".header-wrapper");
 
         //Bars
         const bars = document.createElement('i');

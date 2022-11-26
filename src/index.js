@@ -1,4 +1,4 @@
 import "./configs.scss";
-import headerController from "./controller/headerController";
+import Controller from './controller/Controller'
 
-headerController;
+Controller;

@@ -11,6 +11,11 @@
     i{
         font-size: 39px;
         color: var(--font-color);
+        padding: .5rem;
+        border-radius: 10px;
+        &:hover{
+            cursor: pointer;
+        }
     }
     h1{
         span{

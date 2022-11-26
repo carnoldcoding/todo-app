@@ -16,6 +16,7 @@
     --standard-font-family: 'Roboto Flex', sans-serif;
     //Colors
     --header-background: white;
+    --sidebar-background: var(--header-background);
     --primary-color: #8349E2;
     --font-color: black;
     --toggle-color: black;
@@ -23,14 +24,37 @@
 
 .dark-theme{
     --header-background: #252525; 
+    --sidebar-background: var(--header-background);
     --font-color: white;
     --toggle-color: white;
 }
 
 //General Settings
 
+#root{
+    min-height: 100vh;
+}
+.content-grid{
+    display: grid;
+    min-height: calc(100vh - 80px);
+    grid-template-columns: repeat(4, 1fr);
+}
+
 h1{
     font-family: var(--standard-font-family);
     font-size: 3rem;
+    color: var(--font-color);
+}
+
+h2{
+    font-family: var(--standard-font-family);
+    font-size: 2.5rem;
+    color: var(--font-color);
+    text-transform: capitalize;
+}
+
+h3{
+    font-family: var(--standard-font-family);
+    font-size: 1.75rem;
     color: var(--font-color);
 }
