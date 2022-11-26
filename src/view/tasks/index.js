@@ -7,11 +7,11 @@ const Tasks = function(){
         const mainContent = createElement('div', '', 'main-content');
         grid.append(mainContent);
     }
-    const render = function(taskList, category){
-        const header = createElement('h1', category.getTitle(), 'task-list-header');
+    const render = function(taskList, categoryTitle){
         const mainContent = document.querySelector('.main-content');
+        mainContent.textContent = '';
+        const header = createElement('h1', categoryTitle, 'task-list-header');
         const tasksWrapper = createElement('div', '', 'task-list-wrapper');
-        console.log(taskList);
         taskList.forEach(function(task){
             const taskWrapper = createElement('div', '', 'task-wrapper');
             const checkbox = createElement('i', '', 'fa-regular', 'fa-square')

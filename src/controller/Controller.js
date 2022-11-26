@@ -15,7 +15,7 @@ const Controller = (function(){
     App.addCategoryToTask(1, 2);
     App.addCategoryToTask(2, 3);
     App.addCategoryToTask(2, 4);
-    App.display();
+    // App.display();
 
     headerController();
     SidebarController();

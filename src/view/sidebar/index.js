@@ -18,7 +18,6 @@ const Sidebar = (function(){
         const allTasks = createElement('div', '', 'home-item');
         const allTasksTitle = createElement('h3', 'All Tasks');
         const allTasksIcon = createElement('i', '', 'fa-solid', 'fa-inbox');
-        // allTasks.addEventListener('click', allCategoryFilter);
         allTasks.append(allTasksIcon, allTasksTitle);
 
         //Today Category
@@ -50,16 +49,19 @@ const Sidebar = (function(){
         grid.append(sidebar);
     }
 
-    const renderList = function(taskLists){
+    const renderList = function(taskLists, listFilter){
         const listsWrapper = document.querySelector('.lists-wrapper');
         const lists = createElement('div', '', 'task-lists');
         taskLists.forEach(function(taskList){
             const listItem = createElement('div', '', 'list-item');
             const listItemTitle = createElement('h3', taskList.getTitle());
             const listItemIcon = createElement('i', '', 'fa-regular', 'fa-note-sticky');
+            listItem.setAttribute("id", `category-${taskList.getId()}`)
+            listItem.addEventListener('click', (e)=>{listFilter(e.currentTarget.id)});
 
             listItem.append(listItemIcon, listItemTitle);
             lists.append(listItem);
+
         })
         listsWrapper.append(lists);
     }
@@ -68,6 +70,7 @@ const Sidebar = (function(){
         render,
         renderList
     }
+
 })();
 
 export default Sidebar;

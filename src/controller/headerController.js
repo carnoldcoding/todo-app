@@ -8,8 +8,8 @@ const headerController = (function(){
         Header.toggle(App.getDarkMode());
     }
     const toggleSidebar = function(){
-        App.toggleSidebar();
-        Header.toggleSidebar(App.getSidebarStatus());
+        App.toggleSidebar(); //Update Model
+        Header.toggleSidebar(App.getSidebarStatus()); //Update View
     }
     //Render
     Header.render(toggleTheme, toggleSidebar);
