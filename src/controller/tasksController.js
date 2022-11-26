@@ -3,7 +3,7 @@ import Tasks from "../view/tasks";
 
 const TasksController = function(){
     Tasks.create();
-    Tasks.render(App.getTasks(), App.getCategories()[0])
+    Tasks.render(App.getTasks(), 'All')
 }
 
 export default TasksController;
