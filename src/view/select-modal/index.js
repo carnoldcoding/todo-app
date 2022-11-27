@@ -16,11 +16,13 @@ const SelectModal = function(){
         const taskIcon = createElement('i', '', 'fa-solid', 'fa-file-circle-plus');
         const taskText = createElement('h3', 'Task');
         createTask.append(taskIcon, taskText);
+        createTask.addEventListener('click', toggleSelectModal);
 
         const createList = createElement('div', '', 'option');
         const listIcon = createElement('i', '', 'fa-solid', 'fa-folder-plus');
         const listText = createElement('h3', 'List');
         createList.append(listIcon, listText);
+        createList.addEventListener('click', toggleSelectModal);
         
         header.append(close);
         options.append(createTask, createList);

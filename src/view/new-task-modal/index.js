@@ -1,0 +1,58 @@
+import './newTask.scss'
+import { createElement } from '../helper';
+
+const NewTask = function(){
+    const render = function(categoryList){
+        const root = document.querySelector('#root');
+        const container = createElement('div', '', 'new-task-container');
+        const wrapper = createElement('div', '', 'new-task-wrapper');
+        const form = createElement('form', '', 'new-task-form');
+        //Create Input/Label
+        const input = document.createElement('input');
+        input.setAttribute("type", "input");
+        input.setAttribute('name', 'task-details');
+
+        //Create Select/Label
+        const listSelect = document.createElement('select');
+        listSelect.setAttribute('name', 'task-list');
+        
+        //if categoryList exists
+        categoryList && categoryList.forEach(function(category){
+            const option = createElement('option', category.getTitle());
+            option.setAttribute('value', category.getId());
+            listSelect.append(option);
+        })
+
+        //Create Date Select
+        const dateSelect = document.createElement('input');
+        dateSelect.setAttribute('type', 'date');
+
+        //Create Priority Select
+        const prioritySelect = document.createElement('select');
+        prioritySelect.setAttribute('name', 'priority-select');
+        const lowPriority = createElement('option', 'Low Priority');
+        lowPriority.setAttribute('value', 1);
+        const midPriority = createElement('option', 'Mid Priority');
+        midPriority.setAttribute('value', 2);
+        const highPriority = createElement('option', 'High Priority');
+        highPriority.setAttribute('value', 3);
+
+        prioritySelect.append(lowPriority, midPriority, highPriority);
+
+        //Create Buttons
+        const buttons = createElement('div', '', 'buttons-wrapper');
+        const cancelButton = createElement('div', 'cancel', 'cancel-button');
+        const submitButton = createElement('div', 'submit', 'submit-button');
+        //Render
+        buttons.append(cancelButton, submitButton);
+        form.append(input, listSelect, dateSelect, prioritySelect);
+        wrapper.append(form, buttons);
+        container.append(wrapper);
+        root.append(container);
+    }
+    return{
+        render
+    }
+}();
+
+export default NewTask;
