@@ -2,7 +2,7 @@ import './newTask.scss'
 import { createElement } from '../helper';
 
 const NewTask = function(){
-    const render = function(categoryList){
+    const render = function(toggle, categoryList){
         const root = document.querySelector('#root');
         const container = createElement('div', '', 'new-task-container');
         const wrapper = createElement('div', '', 'new-task-wrapper');
@@ -15,7 +15,10 @@ const NewTask = function(){
         //Create Select/Label
         const listSelect = document.createElement('select');
         listSelect.setAttribute('name', 'task-list');
-        
+        const noOption = createElement('option', 'None');
+        noOption.setAttribute('value', -1);
+        listSelect.append(noOption);
+
         //if categoryList exists
         categoryList && categoryList.forEach(function(category){
             const option = createElement('option', category.getTitle());
@@ -43,6 +46,10 @@ const NewTask = function(){
         const buttons = createElement('div', '', 'buttons-wrapper');
         const cancelButton = createElement('div', 'cancel', 'cancel-button');
         const submitButton = createElement('div', 'submit', 'submit-button');
+
+        //EventListeners
+        cancelButton.addEventListener('click', toggle);
+        submitButton.addEventListener('click', toggle);
         //Render
         buttons.append(cancelButton, submitButton);
         form.append(input, listSelect, dateSelect, prioritySelect);
@@ -50,8 +57,14 @@ const NewTask = function(){
         container.append(wrapper);
         root.append(container);
     }
+
+    const toggle = function(){
+        const container = document.querySelector('.new-task-container');
+        container.classList.toggle('hidden');
+    }
     return{
-        render
+        render,
+        toggle
     }
 }();
 
