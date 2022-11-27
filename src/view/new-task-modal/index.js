@@ -4,7 +4,7 @@ import { createElement } from '../helper';
 const NewTask = function(){
     const render = function(toggle, categoryList){
         const root = document.querySelector('#root');
-        const container = createElement('div', '', 'new-task-container');
+        const container = createElement('div', '', 'new-task-container', 'hidden');
         const wrapper = createElement('div', '', 'new-task-wrapper');
         const form = createElement('form', '', 'new-task-form');
         //Create Input/Label
