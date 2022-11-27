@@ -2,9 +2,9 @@ import './newTask.scss'
 import { createElement } from '../helper';
 
 const NewTask = function(){
-    const render = function(toggle, categoryList){
+    const render = function(toggle, categoryList, addTaskHandler){
         const root = document.querySelector('#root');
-        const container = createElement('div', '', 'new-task-container', 'hidden');
+        const container = createElement('div', '', 'new-task-container');
         const wrapper = createElement('div', '', 'new-task-wrapper');
         const form = createElement('form', '', 'new-task-form');
         //Create Input/Label
@@ -44,12 +44,13 @@ const NewTask = function(){
 
         //Create Buttons
         const buttons = createElement('div', '', 'buttons-wrapper');
-        const cancelButton = createElement('div', 'cancel', 'cancel-button');
-        const submitButton = createElement('div', 'submit', 'submit-button');
+        const cancelButton = createElement('button', 'cancel', 'cancel-button');
+        const submitButton = createElement('button', 'submit', 'submit-button');
 
         //EventListeners
         cancelButton.addEventListener('click', toggle);
         submitButton.addEventListener('click', toggle);
+        submitButton.addEventListener('click', addTaskHandler);
         //Render
         buttons.append(cancelButton, submitButton);
         form.append(input, listSelect, dateSelect, prioritySelect);
@@ -62,9 +63,25 @@ const NewTask = function(){
         const container = document.querySelector('.new-task-container');
         container.classList.toggle('hidden');
     }
+
+    const getData = function(){
+        const form = document.querySelector('form[class="new-task-form"]');
+        const details = form.querySelector('input[name="task-details"]').value;
+        const taskList = form.querySelector('select[name="task-list"]').value;
+        const date = form.querySelector('input[type="date"]').value;
+        const priority = form.querySelector('select[name="priority-select"').value;
+        
+        return {
+            details,
+            taskList,
+            date,
+            priority
+        }
+    }
     return{
         render,
-        toggle
+        toggle,
+        getData
     }
 }();
 
