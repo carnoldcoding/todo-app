@@ -30,10 +30,11 @@ const NewList = (function(){
         const container = document.querySelector('.new-list-container');
         container.classList.toggle('hidden');
     }
-    
+
     const getData = function(){
         const form = document.querySelector('form[class="new-list-form"]');
         const details = form.querySelector('input[name="list-details"]').value;
+        form.querySelector('input[name="list-details"]').value = '';
         return details
     }
     return{

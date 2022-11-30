@@ -86,6 +86,14 @@ const NewTask = function(){
         const taskList = form.querySelector('select[name="task-list"]').value;
         const date = form.querySelector('input[type="date"]').value;
         const priority = form.querySelector('select[name="priority-select"').value;
+
+        //Reset Form
+        form.querySelector('input[name="task-details"]').value = '';
+        form.querySelector('select[name="task-list"]').value = '';
+        form.querySelector('input[type="date"]').value = '';
+        form.querySelector('select[name="priority-select"').value = '';
+
+
         
         return {
             details,
