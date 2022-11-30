@@ -4,7 +4,7 @@ import { createElement } from '../helper';
 const NewTask = function(){
     const render = function(toggle, categoryList, addTaskHandler){
         const root = document.querySelector('#root');
-        const container = createElement('div', '', 'new-task-container');
+        const container = createElement('div', '', 'new-task-container', 'hidden');
         const wrapper = createElement('div', '', 'new-task-wrapper');
         const form = createElement('form', '', 'new-task-form');
         //Create Input/Label
@@ -59,6 +59,22 @@ const NewTask = function(){
         root.append(container);
     }
 
+    const renderCategories = function(categoryList){
+        //Create Select/Label
+        const listSelect = document.querySelector('select');
+        listSelect.textContent = '';
+        const noOption = createElement('option', 'None');
+        noOption.setAttribute('value', -1);
+        listSelect.append(noOption);
+
+        //if categoryList exists
+        categoryList && categoryList.forEach(function(category){
+            const option = createElement('option', category.getTitle());
+            option.setAttribute('value', category.getId());
+            listSelect.append(option);
+        })
+    }
+
     const toggle = function(){
         const container = document.querySelector('.new-task-container');
         container.classList.toggle('hidden');
@@ -80,6 +96,7 @@ const NewTask = function(){
     }
     return{
         render,
+        renderCategories,
         toggle,
         getData
     }

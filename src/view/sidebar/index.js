@@ -49,7 +49,8 @@ const Sidebar = (function(){
         //Task Lists
         const listsWrapper = createElement('div', '', 'lists-wrapper');
         const listsTitle = createElement('h2', 'Task Lists', 'task-lists-title');
-        listsWrapper.append(listsTitle);
+        const lists = createElement('div', '', 'task-lists');
+        listsWrapper.append(listsTitle, lists);
         sidebar.append(listsWrapper);
         //Add them all
         homeItems.append(allTasks, todaysTasks, weeklyTasks, importantTasks);
@@ -59,7 +60,8 @@ const Sidebar = (function(){
 
     const renderList = function(taskLists, listFilter){
         const listsWrapper = document.querySelector('.lists-wrapper');
-        const lists = createElement('div', '', 'task-lists');
+        const lists = document.querySelector('.task-lists');
+        lists.textContent = '';
         taskLists.forEach(function(taskList){
             const listItem = createElement('div', '', 'list-item');
             const listItemTitle = createElement('h3', taskList.getTitle());

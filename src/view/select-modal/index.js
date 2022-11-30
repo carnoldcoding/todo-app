@@ -2,7 +2,7 @@ import { createElement } from "../helper";
 import "./selectModalStyles.scss";
 
 const SelectModal = function(){
-    const render = function(toggleSelectModal, toggleNewTaskModal){
+    const render = function(toggleSelectModal, toggleNewTaskModal, toggleNewListModal){
         const root = document.querySelector('#root');
         const container = createElement('div', '', 'select-modal-container');
         container.classList.add('hidden');
@@ -24,6 +24,7 @@ const SelectModal = function(){
         const listText = createElement('h3', 'List');
         createList.append(listIcon, listText);
         createList.addEventListener('click', toggleSelectModal);
+        createList.addEventListener('click', toggleNewListModal);
         
         header.append(close);
         options.append(createTask, createList);
