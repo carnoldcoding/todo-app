@@ -42,7 +42,7 @@ const ActionButtonController = function(){
         taskList >= 0 ? App.setCurrentCategory(taskList) : App.setCurrentCategory(1);
         App.filter(App.getCurrentCategoryId());
         Tasks.render(App.getCurrentTaskList(), App.getCategoryTitles()[App.getCurrentCategoryId() - 1]);
-    } 
+    }  
     const listFilter = function(category){
         App.filter(parseInt(category.substring(category.indexOf('-')+1)));
         Tasks.render(App.getCurrentTaskList(), category.substring(0, category.indexOf('-')));
@@ -56,7 +56,8 @@ const ActionButtonController = function(){
 
     ActionButton.render(toggleSelectModal);
     SelectModal.render(toggleSelectModal, toggleNewTask, toggleNewList);
-    NewTask.render(toggleNewTask, App.getCategories(), addTaskHandler);
+    NewTask.render(toggleNewTask, addTaskHandler);
+    NewTask.renderCategories(App.getCategories());
     NewList.render(toggleNewList, addListHandler);
 }
 

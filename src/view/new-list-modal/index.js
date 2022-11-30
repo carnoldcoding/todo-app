@@ -4,7 +4,7 @@ import { createElement } from "../helper"
 const NewList = (function(){
     const render = function(toggleNewList, addListHandler){
         const root = document.querySelector('#root');
-        const container = createElement('div', '', 'new-list-container');
+        const container = createElement('div', '', 'new-list-container', 'hidden');
         const wrapper = createElement('div', '', 'new-list-wrapper');
         const form = createElement('form', '', 'new-list-form');
         //Create Input/Label

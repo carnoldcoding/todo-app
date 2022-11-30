@@ -7,7 +7,7 @@ const Tasks = function(){
         const mainContent = createElement('div', '', 'main-content');
         grid.append(mainContent);
     }
-    const render = function(taskList, categoryTitle){
+    const render = function(taskList, categoryTitle, toggle){
         const mainContent = document.querySelector('.main-content');
         mainContent.textContent = '';
         const header = createElement('h1', categoryTitle, 'task-list-header');
@@ -18,6 +18,7 @@ const Tasks = function(){
             const taskDetails = createElement('p', task.getContent(), 'task-details');
             const taskDate = createElement('p', task.getFormattedDate(), 'task-date');
             const editTask = createElement('i', '', 'fa-regular', 'fa-pen-to-square');
+            editTask.addEventListener('click', toggle);
             const deleteTask = createElement('i', '', 'fa-solid', 'fa-trash-can');
             taskWrapper.append(checkbox, taskDetails, taskDate, editTask, deleteTask);
             tasksWrapper.append(taskWrapper);

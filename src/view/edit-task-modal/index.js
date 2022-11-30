@@ -1,12 +1,12 @@
-import './newTask.scss'
+import './editTask.scss'
 import { createElement } from '../helper';
 
-const NewTask = function(){
-    const render = function(toggle, addTaskHandler){
+const EditTask = function(){
+    const render = function(toggle, categoryList, editTaskHandler){
         const root = document.querySelector('#root');
-        const container = createElement('div', '', 'new-task-container', 'hidden');
-        const wrapper = createElement('div', '', 'new-task-wrapper');
-        const form = createElement('form', '', 'new-task-form');
+        const container = createElement('div', '', 'edit-task-container');
+        const wrapper = createElement('div', '', 'edit-task-wrapper');
+        const form = createElement('form', '', 'edit-task-form'); 
         //Create Input/Label
         const input = document.createElement('input');
         input.setAttribute("type", "input");
@@ -15,6 +15,16 @@ const NewTask = function(){
         //Create Select/Label
         const listSelect = document.createElement('select');
         listSelect.setAttribute('name', 'task-list');
+        const noOption = createElement('option', 'None');
+        noOption.setAttribute('value', -1);
+        listSelect.append(noOption);
+
+        //if categoryList exists
+        categoryList && categoryList.forEach(function(category){
+            const option = createElement('option', category.getTitle());
+            option.setAttribute('value', category.getId());
+            listSelect.append(option);
+        })
 
         //Create Date Select
         const dateSelect = document.createElement('input');
@@ -31,7 +41,7 @@ const NewTask = function(){
         highPriority.setAttribute('value', 3);
 
         prioritySelect.append(lowPriority, midPriority, highPriority);
-  
+
         //Create Buttons
         const buttons = createElement('div', '', 'buttons-wrapper');
         const cancelButton = createElement('button', 'cancel', 'cancel-button');
@@ -40,7 +50,7 @@ const NewTask = function(){
         //EventListeners
         cancelButton.addEventListener('click', toggle);
         submitButton.addEventListener('click', toggle);
-        submitButton.addEventListener('click', addTaskHandler);
+        submitButton.addEventListener('click', editTaskHandler);
         //Render
         buttons.append(cancelButton, submitButton);
         form.append(input, listSelect, dateSelect, prioritySelect);
@@ -57,7 +67,6 @@ const NewTask = function(){
         noOption.setAttribute('value', -1);
         listSelect.append(noOption);
 
-
         //if categoryList exists
         categoryList && categoryList.forEach(function(category){
             const option = createElement('option', category.getTitle());
@@ -67,12 +76,12 @@ const NewTask = function(){
     }
 
     const toggle = function(){
-        const container = document.querySelector('.new-task-container');
+        const container = document.querySelector('.edit-task-container');
         container.classList.toggle('hidden');
     }
 
     const getData = function(){
-        const form = document.querySelector('form[class="new-task-form"]');
+        const form = document.querySelector('form[class="edit-task-form"]');
         const details = form.querySelector('input[name="task-details"]').value;
         const taskList = form.querySelector('select[name="task-list"]').value;
         const date = form.querySelector('input[type="date"]').value;
@@ -99,4 +108,4 @@ const NewTask = function(){
     }
 }();
 
-export default NewTask;
+export default EditTask;
