@@ -1,11 +1,12 @@
 import Task from './task'
 import Category from './category'
-import {format} from 'date-fns'
+import {isThisWeek, isToday} from 'date-fns'
 
 //List Object
 const App = (function(){
     //Attributes
     let tasks = [];
+    let categoryTitles = ['All', 'Today', 'Weekly', 'Important'];
     let categories = [];
     let currentCategoryId = 1;
     let currentTaskList = [];
@@ -46,10 +47,39 @@ const App = (function(){
         return tasks;
     }
 
+    const filter = function(categoryId){
+        switch(categoryId){
+            case(1):{
+                setCurrentTaskList(App.getTasks());
+                setCurrentCategory(1);
+                break;
+            }
+            case(2):{
+                setCurrentTaskList(App.getTasks().filter(task => isToday(task.getDueDate())));
+                setCurrentCategory(2);
+                break;
+            }
+            case(3):{
+                setCurrentTaskList(App.getTasks().filter(task => isThisWeek(task.getDueDate())));
+                setCurrentCategory(3);
+                break;
+            }
+            case(4):{
+                setCurrentTaskList(App.getTasks().filter(task => task.getPriority() > 2));
+                setCurrentCategory(4);
+                break;
+            }
+            default:
+                setCurrentTaskList(App.getTasks().filter(task => task.getCategoryId() == categoryId)); 
+                setCurrentCategory(categoryId);
+        }
+    }
+
     //Category Methods
     const addCategory = function(text){
-        const category = categories.length == 0 ? Category(1, text) : Category(parseInt(categories[categories.length - 1].getId()+1), text);
+        const category = categories.length == 0 ? Category(5, text) : Category(parseInt(categories[categories.length - 1].getId()+1), text);
         categories.push(category);
+        categoryTitles.push(category.getTitle());
     }
 
     const removeCategory = function(categoryId){
@@ -62,6 +92,7 @@ const App = (function(){
     }
 
     const getCategories = function() {return categories}
+    const getCategoryTitles = function(){return categoryTitles}
 
     const setCurrentCategory = function(newCategoryId){currentCategoryId = newCategoryId}
     const setCurrentTaskList = function(taskList){
@@ -72,6 +103,7 @@ const App = (function(){
         }
     }
     const getCurrentTaskList = function(){return currentTaskList}
+    const getCurrentCategoryId = function(){return currentCategoryId}
     const getCurrentCategory = function(){return Object.create(categories.filter(category => category.getId() == currentCategoryId)[0])}
 
     //Sidebar
@@ -114,9 +146,13 @@ const App = (function(){
         getCurrentCategory,
         setCurrentTaskList,
         getCurrentTaskList,
+        getCurrentCategoryId,
+        getCategoryTitles,
 
         toggleSidebar,
         getSidebarStatus,
+
+        filter,
 
         toggleDarkMode,
         display

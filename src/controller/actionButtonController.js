@@ -24,9 +24,17 @@ const ActionButtonController = function(){
     const addTaskHandler = function(){
         //Destructure the received object data into variables
         const { details, taskList, date, priority } = NewTask.getData();
+        //Task Work
         App.addTask(details);
-        Tasks.render(App.getTasks(), App.getCurrentCategory().getTitle());
-    }
+        const taskId = App.getTasks()[App.getTasks().length-1].getId();
+        App.editPriority(taskId, priority);
+        App.addCategoryToTask(taskList, taskId);
+
+        //Category Work
+        taskList >= 0 ? App.setCurrentCategory(taskList) : App.setCurrentCategory(1);
+        App.filter(App.getCurrentCategoryId());
+        Tasks.render(App.getCurrentTaskList(), App.getCategoryTitles()[App.getCurrentCategoryId() - 1]);
+    }  
 
     ActionButton.render(toggleSelectModal);
     SelectModal.render(toggleSelectModal, toggleNewTask);
