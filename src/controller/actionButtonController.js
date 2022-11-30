@@ -29,13 +29,14 @@ const ActionButtonController = function(){
         const taskId = App.getTasks()[App.getTasks().length-1].getId();
         App.editPriority(taskId, priority);
         App.addCategoryToTask(taskList, taskId);
+        date ? App.editDueDate(taskId, new Date(date)) : App.editDueDate(taskId, new Date());
 
         //Category Work
         taskList >= 0 ? App.setCurrentCategory(taskList) : App.setCurrentCategory(1);
         App.filter(App.getCurrentCategoryId());
         Tasks.render(App.getCurrentTaskList(), App.getCategoryTitles()[App.getCurrentCategoryId() - 1]);
     }  
-
+    
     ActionButton.render(toggleSelectModal);
     SelectModal.render(toggleSelectModal, toggleNewTask);
     NewTask.render(toggleNewTask, App.getCategories(), addTaskHandler);
