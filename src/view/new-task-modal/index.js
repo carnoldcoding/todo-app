@@ -2,7 +2,7 @@ import './newTask.scss'
 import { createElement } from '../helper';
 
 const NewTask = function(){
-    const render = function(toggle, addTaskHandler){
+    const render = function(toggle, categoryList, addTaskHandler){
         const root = document.querySelector('#root');
         const container = createElement('div', '', 'new-task-container', 'hidden');
         const wrapper = createElement('div', '', 'new-task-wrapper');
@@ -15,6 +15,16 @@ const NewTask = function(){
         //Create Select/Label
         const listSelect = document.createElement('select');
         listSelect.setAttribute('name', 'task-list');
+        const noOption = createElement('option', 'None');
+        noOption.setAttribute('value', -1);
+        listSelect.append(noOption);
+
+        //if categoryList exists
+        categoryList && categoryList.forEach(function(category){
+            const option = createElement('option', category.getTitle());
+            option.setAttribute('value', category.getId());
+            listSelect.append(option);
+        })
 
         //Create Date Select
         const dateSelect = document.createElement('input');
@@ -31,7 +41,7 @@ const NewTask = function(){
         highPriority.setAttribute('value', 3);
 
         prioritySelect.append(lowPriority, midPriority, highPriority);
-  
+
         //Create Buttons
         const buttons = createElement('div', '', 'buttons-wrapper');
         const cancelButton = createElement('button', 'cancel', 'cancel-button');
@@ -56,7 +66,6 @@ const NewTask = function(){
         const noOption = createElement('option', 'None');
         noOption.setAttribute('value', -1);
         listSelect.append(noOption);
-
 
         //if categoryList exists
         categoryList && categoryList.forEach(function(category){
@@ -83,6 +92,8 @@ const NewTask = function(){
         form.querySelector('select[name="task-list"]').value = '';
         form.querySelector('input[type="date"]').value = '';
         form.querySelector('select[name="priority-select"').value = '';
+
+
         
         return {
             details,

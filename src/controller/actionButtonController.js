@@ -56,8 +56,7 @@ const ActionButtonController = function(){
 
     ActionButton.render(toggleSelectModal);
     SelectModal.render(toggleSelectModal, toggleNewTask, toggleNewList);
-    NewTask.render(toggleNewTask, addTaskHandler);
-    NewTask.renderCategories(App.getCategories());
+    NewTask.render(toggleNewTask, App.getCategories(), addTaskHandler);
     NewList.render(toggleNewList, addListHandler);
 }
 
